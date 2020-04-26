@@ -4,7 +4,11 @@ const userSchema = mongoose.Schema({
     //_id: mongoose.Schema.Types.ObjectId,
     email:{
         type:String,
-        required:'Email is required for user'
+        trim: true,
+        lowercase: true,
+        unique: true,
+        required: 'Email address is required',
+        //match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email address']
     },
     password:{
         type:String,
@@ -25,7 +29,5 @@ const userSchema = mongoose.Schema({
         default: 'N/A'
     }
 });
-
-userSchema.index({'email':1},{unique:true})
 
 module.exports = mongoose.model('User',userSchema);

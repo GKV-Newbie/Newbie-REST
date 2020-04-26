@@ -1,0 +1,95 @@
+###
+# @name register
+POST http://localhost:4000/user/register
+Content-Type: application/json
+
+{
+    "email":"a2@b.c",
+    "password":"abc",
+    "name":"a2"
+}
+
+###
+# @name login
+POST http://localhost:4000/user/login
+Content-Type: application/json
+
+{
+    "email":"a@b.c",
+    "password":"abc"
+}
+
+###
+
+@authToken = {{login.response.body.$.accessToken}}
+
+###
+
+GET http://localhost:4000/user/my-account
+Authorization: Bearer {{authToken}}
+
+###
+POST http://localhost:4000/procedure/create
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "name":"Sample Directory"
+}
+
+###
+PUT http://localhost:4000/procedure/update
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id":"5ea5ceafc351ac54197f3ba9",
+    "name":"Sample Directory-Updated",
+    "shareType":"private"
+}
+###
+
+# @name queryCreator
+GET http://localhost:4000/procedure/list
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name queryCreator
+GET http://localhost:4000/procedure/list/my
+Authorization: Bearer {{authToken}}
+
+###
+
+# @name queryCreator
+GET http://localhost:4000/procedure/list/shared
+Authorization: Bearer {{authToken}}
+
+###
+GET http://localhost:4000/procedure/read
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id":"5ea5ceafc351ac54197f3ba9"
+}
+
+###
+PUT http://localhost:4000/procedure/share/give
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id":"5ea5ceafc351ac54197f3ba9",
+    "email":"a2@b.c"
+}
+
+###
+PUT http://localhost:4000/procedure/share/remove
+Authorization: Bearer {{authToken}}
+Content-Type: application/json
+
+{
+    "id":"5ea5ceafc351ac54197f3ba9",
+    "email":"a2@b.c"
+}

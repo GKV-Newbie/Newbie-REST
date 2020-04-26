@@ -3,5 +3,6 @@ const UserWriteManager = require('./user-write-manager')
 
 module.exports = {
     registerUser:UserWriteManager.registerUser,
-    loginUser:UserReadManager.loginUser
+    loginUser:UserReadManager.loginUser,
+    getUser:UserReadManager.getUser
 }
