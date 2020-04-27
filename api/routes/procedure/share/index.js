@@ -9,9 +9,9 @@ router.put('/give', AuthToken.authenticateToken , ProcedureManager.canUpdate ,as
     res.send(response)
 })
 
-router.put('/remove', AuthToken.authenticateToken , ProcedureManager.canUpdate ,async(req,res)=>{
+router.put('/revoke', AuthToken.authenticateToken , ProcedureManager.canUpdate ,async(req,res)=>{
     let {id,email} = req.body
-    const response = await ProcedureManager.removeAccess(id,email)
+    const response = await ProcedureManager.revokeAccess(id,email)
     res.send(response)
 })
 

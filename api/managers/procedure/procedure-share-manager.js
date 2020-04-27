@@ -20,10 +20,10 @@ async function giveAccess(id,email){
     }
 }
 
-async function removeAccess(id,email){
-    console.log('procedure-share-manager has recieved a request to remove a procedure share')
+async function revokeAccess(id,email){
+    console.log('procedure-share-manager has recieved a request to revoke a procedure share')
     
-    console.log('attempting Procedure Share remove to Mongo')
+    console.log('attempting Procedure Share revoke to Mongo')
     try {
         const user = await UserReadManager.getUserByEmail(email);
         if(user._id){
@@ -39,4 +39,4 @@ async function removeAccess(id,email){
     }
 }
 
-module.exports = {giveAccess,removeAccess}
+module.exports = {giveAccess,revokeAccess}
