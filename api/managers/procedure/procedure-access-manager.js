@@ -3,7 +3,7 @@ const ProcedureReadManager = require('./procedure-read-manager')
 
 async function canRead(req,res,next){
     console.log('checking if request has a procedure id >'+req.body.id)
-    const procedureId = req.body.id
+    const procedureId = req.query.id
     if(!procedureId){
         return res.sendStatus(404)
     }
