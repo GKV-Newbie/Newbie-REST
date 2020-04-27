@@ -27,6 +27,10 @@ const userSchema = mongoose.Schema({
     name:{
         type: String,
         default: 'N/A'
+    },
+    displayPicture:{
+        type: String,
+        default: 'https://i.imgur.com/OpfeoeI.png'
     }
 });
 

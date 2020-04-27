@@ -21,4 +21,16 @@ router.get('/shared', AuthToken.authenticateToken , async(req,res)=>{
     res.send(procedures)
 })
 
+router.get('/user' , async(req,res)=>{
+    const email = req.query.email
+    const procedures = await ProcedureManager.listOwnedProceduresByEmail(email)
+    res.send(procedures)
+})
+
+router.get('/child' , async(req,res)=>{
+    const id = req.query.id
+    const procedures = await ProcedureManager.listChildProcedures(id)
+    res.send(procedures)
+})
+
 module.exports = router

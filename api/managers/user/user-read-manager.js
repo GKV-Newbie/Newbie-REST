@@ -31,6 +31,7 @@ async function getUser(id){
         console.log('user=')
         console.log(user)
         if(user){
+            user.password = undefined
             return user
         }
         return {error:'Unknown'}
@@ -47,6 +48,7 @@ async function getUserByEmail(email){
         console.log('user=')
         console.log(user)
         if(user){
+            user.password = undefined
             return user
         }
         return {error:'Unknown'}

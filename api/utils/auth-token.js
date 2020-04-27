@@ -10,6 +10,7 @@ function authenticateToken(req, res, next) {
         req.userId = id
         next()
     },function(err){
+        console.log(authHeader)
         res.sendStatus(403)
     });
 }

@@ -1,4 +1,5 @@
 const Procedure = require('../../models/procedure')
+const ProcedureReadManager = require('./procedure-read-manager')
 
 async function createProcedure(name,parent,owner,shareType,procedureType,process){
     let procedure = {name,parent,owner,shareType,procedureType,process}
@@ -8,6 +9,9 @@ async function createProcedure(name,parent,owner,shareType,procedureType,process
 
     console.log('attempting Procedure create to Mongo')
     try {
+        if(await ProcedureReadManager.checkProcedureOwner(parent,owner) === false){
+            return {error:'Parent not owned by you'}
+        }
         procedure = await Procedure.create(procedure)
         console.log('procedure=')
         console.log(procedure)
