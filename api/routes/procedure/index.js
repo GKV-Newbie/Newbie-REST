@@ -7,17 +7,26 @@ router.post('/create', AuthToken.authenticateToken ,async(req,res)=>{
     let {name,parent,owner,shareType,procedureType,process} = req.body
     owner = req.userId
     const procedure = await ProcedureManager.createProcedure(name,parent,owner,shareType,procedureType,process)
-    res.send(procedure)
+    if(procedure.error)
+        res.sendStatus(500).send(procedure)
+    else    
+        res.send(procedure)
 })
 
 router.get('/read', AuthToken.optionalAuthenticateToken , ProcedureManager.canRead , async(req,res)=>{
-    res.send(req.procedure)
+    if(procedure.error)
+        res.sendStatus(500).send(procedure)
+    else    
+        res.send(procedure)
 })
 
 router.put('/update', AuthToken.authenticateToken , ProcedureManager.canUpdate ,async(req,res)=>{
     let {id,name,shareType,procedureType,process} = req.body
     const procedure = await ProcedureManager.updateProcedure(id,name,shareType,procedureType,process)
-    res.send(procedure)
+    if(procedure.error)
+        res.sendStatus(500).send(procedure)
+    else    
+        res.send(procedure)
 })
 
 router.use('/list',require('./list'))

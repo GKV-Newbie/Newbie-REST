@@ -6,31 +6,46 @@ const ProcedureManager = require('../../../managers/procedure')
 router.get('/', AuthToken.authenticateToken , async(req,res)=>{
     const user = req.userId
     const procedures = await ProcedureManager.listAllProcedures(user)
-    res.send(procedures)
+    if(procedures.error)
+        res.sendStatus(500).send(procedures)
+    else    
+        res.send(procedures)
 })
 
 router.get('/my', AuthToken.authenticateToken , async(req,res)=>{
     const user = req.userId
     const procedures = await ProcedureManager.listOwnedProcedures(user)
-    res.send(procedures)
+    if(procedures.error)
+        res.sendStatus(500).send(procedures)
+    else    
+        res.send(procedures)
 })
 
 router.get('/shared', AuthToken.authenticateToken , async(req,res)=>{
     const user = req.userId
     const procedures = await ProcedureManager.listSharedAccessProcedures(user)
-    res.send(procedures)
+    if(procedures.error)
+        res.sendStatus(500).send(procedures)
+    else    
+        res.send(procedures)
 })
 
 router.get('/user' , async(req,res)=>{
     const email = req.query.email
     const procedures = await ProcedureManager.listOwnedProceduresByEmail(email)
-    res.send(procedures)
+    if(procedures.error)
+        res.sendStatus(500).send(procedures)
+    else    
+        res.send(procedures)
 })
 
 router.get('/child' , async(req,res)=>{
     const id = req.query.id
     const procedures = await ProcedureManager.listChildProcedures(id)
-    res.send(procedures)
+    if(procedures.error)
+        res.sendStatus(500).send(procedures)
+    else    
+        res.send(procedures)
 })
 
 module.exports = router
