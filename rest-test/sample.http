@@ -87,13 +87,9 @@ Authorization: Bearer {{authToken}}
 GET http://localhost:4000/procedure/list/child?id=5ea5d4c750443355b435a41b
 
 ###
-GET http://localhost:4000/procedure/read
+GET http://localhost:4000/procedure/read?id=5ea5ceafc351ac54197f3ba9
 Authorization: Bearer {{authToken}}
-Content-Type: application/json
 
-{
-    "id":"5ea5ceafc351ac54197f3ba9"
-}
 ###
 a (private)=> 5ea5ceafc351ac54197f3ba9
 a3 (public)=> 5ea5d4c750443355b435a41b
