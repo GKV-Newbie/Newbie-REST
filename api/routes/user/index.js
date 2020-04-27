@@ -4,6 +4,7 @@ const AuthToken = require('../../utils/auth-token');
 const UserManager = require('../../managers/user')
 
 router.post('/register', async(req,res)=>{
+    console.log(req)
     let {email,password,registrationType,name,displayPicture} = req.body
     const jwt = await UserManager.registerUser(email,password,registrationType,name,displayPicture)
     if(jwt.error)
