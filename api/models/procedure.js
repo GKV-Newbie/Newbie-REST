@@ -42,7 +42,7 @@ procedureSchema.index({'parent':1,'name':1},{unique:true})
 var autoPopulate = function(next) {
     console.log('populating')
     //this.populate('stats');
-    this.populate('user');
+    this.populate('owner','name email');
     next();
 };
   

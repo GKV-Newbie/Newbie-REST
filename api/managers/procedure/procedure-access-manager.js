@@ -28,7 +28,7 @@ async function canRead(req,res,next){
     }
 
     console.log('checking if the procedure is owned by the user >'+procedure.owner)
-    if(procedure.owner.equals(userId)){
+    if(procedure.owner._id.equals(userId)){
         next()
         return
     }
@@ -36,7 +36,7 @@ async function canRead(req,res,next){
     console.log('checking if the procedure is shared to the user >'+procedure.sharedAccess)
     for(let i in procedure.sharedAccess){
         console.log(i)
-        if(procedure.sharedAccess[i].equals(userId)){
+        if(procedure.sharedAccess[i]._id.equals(userId)){
             next()
         
             return
@@ -70,7 +70,7 @@ async function canUpdate(req,res,next){
     }
 
     console.log('checking if the procedure is owned by the user >'+procedure.owner+' >'+userId)
-    if(procedure.owner.equals(userId)){
+    if(procedure.owner._id.equals(userId)){
         next()
         return
     }

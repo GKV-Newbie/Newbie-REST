@@ -42,7 +42,7 @@ async function checkProcedureOwner(id,owner){
         console.log('procedure=')
         console.log(procedure)
         if(procedure){
-            return procedure.owner.equals(owner)
+            return procedure.owner._id.equals(owner)
         }
         return false
     } catch (error) {
@@ -99,9 +99,12 @@ async function listSharedAccessProcedures(sharedAccess){
     
     procedures = await listProcedures(procedure)
 
+    //return procedures
+
     children = []
 
-    for(let proc in procedures){
+    for(let i=0; i<procedures.length ; i++){
+        const proc = procedures[i];
         children = children.concat(await listChildProcedures(proc._id))
     }
 
