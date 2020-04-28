@@ -43,6 +43,7 @@ var autoPopulate = function(next) {
     console.log('populating')
     //this.populate('stats');
     this.populate('owner','name email');
+    this.populate('sharedAccess','name email');
     next();
 };
   

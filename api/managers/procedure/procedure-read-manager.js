@@ -21,7 +21,7 @@ async function getProcedure(id){
         console.log('procedure=')
         console.log(procedure)
         if(procedure){
-            delete procedure.sharedAccess;
+            //delete procedure.sharedAccess;
             return procedure
         }
         return {error:'Unknown'}

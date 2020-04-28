@@ -15,6 +15,10 @@ router.post('/create', AuthToken.authenticateToken ,async(req,res)=>{
 
 router.get('/read', AuthToken.optionalAuthenticateToken , ProcedureManager.canRead , async(req,res)=>{
     const procedure = req.procedure
+    
+    console.log('******')
+    console.log(procedure)
+
     if(procedure.error)
         res.sendStatus(500).send(procedure)
     else    
