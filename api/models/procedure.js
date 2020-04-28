@@ -39,4 +39,16 @@ procedureSchema.plugin(idvalidator)
 
 procedureSchema.index({'parent':1,'name':1},{unique:true})
 
+var autoPopulate = function(next) {
+    console.log('populating')
+    //this.populate('stats');
+    this.populate('user');
+    next();
+};
+  
+procedureSchema.
+    pre('findById', autoPopulate).
+    pre('findOne', autoPopulate).
+    pre('find', autoPopulate);
+
 module.exports = mongoose.model('Procedure',procedureSchema);

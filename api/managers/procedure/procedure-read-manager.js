@@ -97,7 +97,15 @@ async function listSharedAccessProcedures(sharedAccess){
 
     console.log('attempting Procedure fetch from Mongo')
     
-    return await listProcedures(procedure)
+    procedures = await listProcedures(procedure)
+
+    children = []
+
+    for(let proc in procedures){
+        children = children.concat(await listChildProcedures(proc._id))
+    }
+
+    return procedures.concat(children)
 }
 
 async function listChildProcedures(id){
