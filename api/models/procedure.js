@@ -37,7 +37,7 @@ const procedureSchema = mongoose.Schema({
 
 procedureSchema.plugin(idvalidator)
 
-procedureSchema.index({'parent':1,'name':1},{unique:true})
+procedureSchema.index({'owner':1,'parent':1,'name':1},{unique:true})
 
 var autoPopulate = function(next) {
     console.log('populating')
