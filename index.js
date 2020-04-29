@@ -27,7 +27,7 @@ mongoose.connect('mongodb+srv://gkv:gkv@cluster0-iyniz.mongodb.net/Newbie?retryW
 .catch((err)=>console.log(err));
 
 app.get('/',(req,res)=>{
-    console.log(req)
+    console.log(req.headers['user-agent'])
     res.send('happy')
 })
 
