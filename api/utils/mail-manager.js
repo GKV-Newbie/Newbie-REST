@@ -9,7 +9,7 @@ async function loadTransporter(){
             port: 465,
             secure: true, // true for 465, false for other ports
             auth: {
-              user: 'gkv@nihalkonda.com', // generated ethereal user
+              user: 'newbie@nihalkonda.com', // generated ethereal user
               pass: 'gkv@123' // generated ethereal password
             }
         });
@@ -19,7 +19,7 @@ async function sendMail(to,subject,html) {
     await loadTransporter()
   
     let data = {
-        from: '"Newbie 🕺" <gkv@nihalkonda.com>', // sender address
+        from: '"Newbie 🕺" <newbie@nihalkonda.com>', // sender address
         to, // list of receivers
         subject, // Subject line
         html // html body

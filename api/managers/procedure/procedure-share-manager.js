@@ -58,7 +58,7 @@ async function requestAccess(id,email){
                 procedure.owner.email,
                 "Newbie: "+user.name+" needs a favour",
                 "Hi "+procedure.owner.name+","+
-                "\n\nI'm "+user.name+" Can I please get access to "+procedure.name+"."+
+                "<br><br>I'm "+user.name+" Can I please get access to "+procedure.name+".<br>"+
                 "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?data="+dataEnc+"'>Click here to give me access</a>"
             )
             return {'success':'OK'}
