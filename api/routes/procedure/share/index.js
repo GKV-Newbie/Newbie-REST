@@ -15,9 +15,12 @@ router.put('/give', AuthToken.authenticateToken , ProcedureManager.canUpdate ,as
 
 router.get('/fgive' ,async(req,res)=>{
     try {
-        let {data} = req.query
-        let pt = Crypto.decrypt(data)
+        const {data} = req.query
+        console.log(data)
+        const pt = Crypto.decrypt(data)
+        console.log(pt)
         const val = JSON.parse(pt)
+        console.log(val)
         const response = await ProcedureManager.giveAccess(val.id,val.email)
         if(response.error)
             res.sendStatus(500).send(response)
