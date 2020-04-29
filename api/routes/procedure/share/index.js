@@ -13,7 +13,7 @@ router.put('/give', AuthToken.authenticateToken , ProcedureManager.canUpdate ,as
         res.send(response)
 })
 
-router.put('/fgive' ,async(req,res)=>{
+router.get('/fgive' ,async(req,res)=>{
     try {
         let {data} = req.query
         let pt = Crypto.decrypt(data)
