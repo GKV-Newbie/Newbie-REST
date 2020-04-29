@@ -54,7 +54,7 @@ async function requestAccess(id,email){
 
             const dataEnc = Crypto.encrypt(JSON.stringify(data))
 
-            Mailer.sendMail(
+            await Mailer.sendMail(
                 procedure.owner.email,
                 "Newbie: "+user.name+" needs a favour",
                 "Hi "+procedure.owner.name+","+
