@@ -1,5 +1,6 @@
 const Procedure = require('../../models/procedure')
 const UserReadManager = require('../user/user-read-manager')
+const Mailer = require('../../utils/mail-manager')
 
 async function giveAccess(id,email){
     console.log('procedure-share-manager has recieved a request to create a procedure share')
@@ -39,4 +40,26 @@ async function revokeAccess(id,email){
     }
 }
 
-module.exports = {giveAccess,revokeAccess}
+async function requestAccess(id,email){
+    console.log('procedure-share-manager has recieved a request to request a procedure share')
+    try {
+        const user = await UserReadManager.getUserByEmail(email);
+        if(user._id){
+            const procedure = await Procedure.findById(id).lean()
+            Mailer.sendMail(
+                procedure.owner.email,
+                "Newbie: "+user.name+" needs a favour",
+                "Hi "+procedure.owner.name+","+
+                "\n\nI'm "+user.name+" Can I please get access to "+procedure.name+"."+
+                "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?id="+id+"'>Click here to give me access</a>"
+            )
+            return {'success':'OK'}
+        }
+        
+    } catch (error) {
+        console.log(error)
+        return {error}
+    }
+}
+
+module.exports = {giveAccess,revokeAccess,requestAccess}

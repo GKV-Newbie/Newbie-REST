@@ -16,6 +16,7 @@ module.exports = {
 
     giveAccess:ProcedureShareManager.giveAccess,
     revokeAccess:ProcedureShareManager.revokeAccess,
+    requestAccess:ProcedureShareManager.requestAccess,
 
     createProcedure:ProcedureWriteManager.createProcedure,
     updateProcedure:ProcedureWriteManager.updateProcedure

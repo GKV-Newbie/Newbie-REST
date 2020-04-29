@@ -21,4 +21,13 @@ router.put('/revoke', AuthToken.authenticateToken , ProcedureManager.canUpdate ,
         res.send(response)
 })
 
+router.put('/request', AuthToken.authenticateToken , async(req,res)=>{
+    let {id,email} = req.body
+    const response = await ProcedureManager.requestAccess(id,email)
+    if(response.error)
+        res.sendStatus(500).send(response)
+    else    
+        res.send(response)
+})
+
 module.exports = router
