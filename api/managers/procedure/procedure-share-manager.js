@@ -59,7 +59,7 @@ async function requestAccess(id,email){
                 "Newbie: "+user.name+" needs a favour",
                 "Hi "+procedure.owner.name+","+
                 "<br><br>I'm "+user.name+" Can I please get access to "+procedure.name+".<br>"+
-                "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?data="+dataEnc+"'>Click here to give me access</a>"
+                "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?data="+dataEnc+"'>Click here to grant access</a>"
             )
             return {'success':'OK'}
         }
