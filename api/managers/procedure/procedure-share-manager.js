@@ -1,6 +1,7 @@
 const Procedure = require('../../models/procedure')
 const UserReadManager = require('../user/user-read-manager')
 const Mailer = require('../../utils/mail-manager')
+const Crypto = require('../../utils/encryption')
 
 async function giveAccess(id,email){
     console.log('procedure-share-manager has recieved a request to create a procedure share')
@@ -46,12 +47,19 @@ async function requestAccess(id,email){
         const user = await UserReadManager.getUserByEmail(email);
         if(user._id){
             const procedure = await Procedure.findById(id).lean()
+            const data = {
+                email,
+                id
+            }
+
+            const dataEnc = Crypto.encrypt(JSON.stringify(data))
+
             Mailer.sendMail(
                 procedure.owner.email,
                 "Newbie: "+user.name+" needs a favour",
                 "Hi "+procedure.owner.name+","+
                 "\n\nI'm "+user.name+" Can I please get access to "+procedure.name+"."+
-                "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?id="+id+"'>Click here to give me access</a>"
+                "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?data="+dataEnc+"'>Click here to give me access</a>"
             )
             return {'success':'OK'}
         }
