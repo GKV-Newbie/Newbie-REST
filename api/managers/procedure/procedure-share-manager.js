@@ -11,7 +11,9 @@ async function giveAccess(id,email){
         const user = await UserReadManager.getUserByEmail(email);
         if(user._id){
             procedure = await Procedure.findByIdAndUpdate(id,{ $push : { sharedAccess : user._id } },{new:true})
+            
             procedure = await Procedure.findById(id)
+
             console.log('procedure=')
             console.log(procedure)
 
@@ -66,9 +68,9 @@ async function requestAccess(id,email){
 
             await Mailer.sendMail(
                 procedure.owner.email,
-                "Newbie: "+user.name+" needs a favour",
+                "Newbie: "+user.name+" needs a procedure of yours",
                 "Hi "+procedure.owner.name+","+
-                "<br><br>I'm "+user.name+" Can I please get access to "+procedure.name+".<br>"+
+                "<br><br>I'm "+user.name+" Can I please get access to '"+procedure.name+"' procedure.<br>"+
                 "<a href='https://newbie-rest.herokuapp.com/procedure/share/fgive?data="+dataEnc+"'>Click here to grant access</a>"
             )
             return {'success':'OK'}
