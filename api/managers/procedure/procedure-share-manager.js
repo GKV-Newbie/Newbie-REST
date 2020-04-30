@@ -11,6 +11,7 @@ async function giveAccess(id,email){
         const user = await UserReadManager.getUserByEmail(email);
         if(user._id){
             procedure = await Procedure.findByIdAndUpdate(id,{ $push : { sharedAccess : user._id } },{new:true})
+            procedure = await Procedure.findById(id)
             console.log('procedure=')
             console.log(procedure)
 

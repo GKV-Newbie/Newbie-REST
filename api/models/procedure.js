@@ -48,7 +48,6 @@ var autoPopulate = function(next) {
 };
   
 procedureSchema.
-    pre('findByIdAndUpdate',autoPopulate).
     pre('findById', autoPopulate).
     pre('findOne', autoPopulate).
     pre('find', autoPopulate);
