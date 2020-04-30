@@ -13,6 +13,15 @@ async function giveAccess(id,email){
             procedure = await Procedure.findByIdAndUpdate(id,{ $push : { sharedAccess : user._id } },{new:true})
             console.log('procedure=')
             console.log(procedure)
+
+            await Mailer.sendMail(
+                user.email,
+                "Newbie: "+procedure.owner.name+" shared a procedure with you",
+                "Hi "+user.name+","+
+                "<br><br>I'm "+procedure.owner.name+" I am giving you access to my '"+procedure.name+"' procedure.<br><br>"+
+                "Hope you find it useful!"
+            )
+
             return {success:'Ok'}
         }
         return {error:'Unknown'}

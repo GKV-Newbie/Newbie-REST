@@ -91,7 +91,7 @@ async function listOwnedProceduresByEmail(email){
 
 async function listSharedAccessProcedures(sharedAccess){
     let procedure = {sharedAccess}
-
+    
     console.log('procedure-read-manager has recieved a request to read a procedure')
     console.log(procedure)
 

@@ -112,3 +112,6 @@ Content-Type: application/json
     "id":"5ea5ceafc351ac54197f3ba9",
     "email":"a3@b.c"
 }
+
+###
+GET http://localhost:4000/procedure/share/fgive?data=b416eee6448e3968b968a1336fa9a2d3b58a0daa1269f316b05efb22737c711ec5865475de48af856ddc1a1def4c4568ML CGBUtpd0R0jByIdgyuCAK3D5zWRgq4mZbzf2kCxcf6 6vrgfBj5EqxeLjJZV6QbGD87l1x2wdgVLXPHyRdDJDzWM6bNmHF2olRR1XqYU=
