@@ -16,7 +16,7 @@
     "btoa": "^1.2.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^5.9.6",
     "mongoose-id-validator": "^0.5.4",
     "nodemailer": "^6.4.6",
